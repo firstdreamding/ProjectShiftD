@@ -1,1 +1,1 @@
-# [my name jef](geoffreyding.com)
+# [my name jef](https://geoffreyding.com)
