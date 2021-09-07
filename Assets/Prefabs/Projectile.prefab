@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8676534468808035715}
   - component: {fileID: 990663566805616038}
   - component: {fileID: 6266608635926538322}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Projectile
   m_TagString: Projectile
   m_Icon: {fileID: 0}
@@ -110,4 +110,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  speed: 5
+  speed: 20

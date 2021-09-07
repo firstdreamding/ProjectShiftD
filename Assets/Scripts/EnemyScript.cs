@@ -5,17 +5,18 @@ using UnityEngine;
 public class EnemyScript : MonoBehaviour
 {
     public int hp = 10;
+    private int current_hp;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        current_hp = hp;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (hp <= 0)
+        if (current_hp <= 0)
         {
             Destroy(gameObject);
         }
@@ -26,7 +27,7 @@ public class EnemyScript : MonoBehaviour
         if (other.tag == "Projectile")
         {
             Debug.Log("This");
-            hp -= 1;
+            current_hp -= 1;
         }
     }
 }

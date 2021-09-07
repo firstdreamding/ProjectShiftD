@@ -21,7 +21,7 @@ public class BaseTowerScript : MonoBehaviour
         //This code right now targets the object that enters into the range first
         if (canShoot && enemyList.Count != 0)
         {
-            OnHighHP();
+            OnFirstCome();
         }
 
     }
@@ -59,11 +59,27 @@ public class BaseTowerScript : MonoBehaviour
 
     private void OnFirstCome()
     {
-        while (enemyList.Count != 0 && enemyList[0] == null)
+        int i = 0;
+        while (enemyList.Count > i)
         {
-            enemyList.RemoveAt(0);
+            if (enemyList[i] == null)
+            {
+                enemyList.RemoveAt(i);
+            } else
+            {
+                if (IsBlocked(enemyList[i]))
+                {
+                    Debug.Log(i + " is blocked");
+                    i++;
+                } else
+                {
+                    Debug.Log("FINE");
+                    break;
+                }
+            }
         }
-        if (enemyList.Count == 0)
+
+        if (enemyList.Count <= i)
         {
             return;
         }
@@ -71,10 +87,24 @@ public class BaseTowerScript : MonoBehaviour
         Debug.Log("Shoots!");
 
         GameObject projectileSummon = Instantiate(projectile, transform.position, Quaternion.identity);
-        projectileSummon.GetComponent<ProjectileFollow>().target = enemyList[0];
+        projectileSummon.GetComponent<ProjectileFollow>().target = enemyList[i];
 
         canShoot = false;
         StartCoroutine(ShootDelay());
+    }
+
+    private bool IsBlocked(GameObject target)
+    {
+        Vector3 dirToPlayer = (target.transform.position - transform.position);
+        dirToPlayer.y = 0;
+        dirToPlayer = dirToPlayer.normalized;
+
+
+        int layerMask = 1 << 2;
+        layerMask = ~layerMask;
+
+        RaycastHit raycastHit;
+        return Physics.Raycast(transform.position, dirToPlayer, out raycastHit, 1000, layerMask) && raycastHit.collider.tag != "Enemy";
     }
 
     private void OnTriggerEnter(Collider other)
