@@ -2,17 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(ShootHandler))]
 public class BaseTowerScript : MonoBehaviour
 {
     private List<GameObject> enemyList;
     private bool canShoot;
 
     public float delayInSeconds;
-    public GameObject projectile;
+
+    private ShootHandler myShoot;
     void Start()
     {
         enemyList = new List<GameObject>();
         canShoot = true;
+
+        myShoot = GetComponent<ShootHandler>();
     }
 
     void Update()
@@ -50,8 +54,8 @@ public class BaseTowerScript : MonoBehaviour
             return;
         }
 
-        GameObject projectileSummon = Instantiate(projectile, transform.position, Quaternion.identity);
-        projectileSummon.GetComponent<ProjectileFollow>().target = temp;
+        //Shoots
+        myShoot.Shoot(temp);
 
         canShoot = false;
         StartCoroutine(ShootDelay());
@@ -85,9 +89,8 @@ public class BaseTowerScript : MonoBehaviour
         }
 
         Debug.Log("Shoots!");
-
-        GameObject projectileSummon = Instantiate(projectile, transform.position, Quaternion.identity);
-        projectileSummon.GetComponent<ProjectileFollow>().target = enemyList[i];
+        //Shoots
+        myShoot.Shoot(enemyList[i]);
 
         canShoot = false;
         StartCoroutine(ShootDelay());

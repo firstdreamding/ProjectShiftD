@@ -1,18 +1,17 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectileFollow : MonoBehaviour
+public class ProjectileVector : MonoBehaviour
 {
-
-    public GameObject target;
     public float speed = 1.0f;
+    public float timeAlive = 10f;
+    public Vector3 vectorMove;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        StartCoroutine(SelfDestruct());
     }
 
     // Update is called once per frame
@@ -25,19 +24,15 @@ public class ProjectileFollow : MonoBehaviour
 
         // Move our position a step closer to the target.
         float step = speed * Time.deltaTime; // calculate distance to move
-        if (target == null)
-        {
-            GetComponent<ParticleSystem>().Play();
-        }
 
         //Try to delete it (possible for race condition)
         try
         {
-            Vector3 targetVec = new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z);
-            transform.position = Vector3.MoveTowards(transform.position, targetVec, step);
-        } catch
+            transform.Translate(vectorMove * step);
+        }
+        catch
         {
-                GetComponent<ParticleSystem>().Play();
+            GetComponent<ParticleSystem>().Play();
         }
 
     }
@@ -48,5 +43,12 @@ public class ProjectileFollow : MonoBehaviour
         {
             GetComponent<ParticleSystem>().Play();
         }
+    }
+
+    //Self Destruct
+    IEnumerator SelfDestruct()
+    {
+        yield return new WaitForSeconds(timeAlive);
+        Destroy(gameObject);
     }
 }
