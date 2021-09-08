@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
-  timeAlive: 4
+  timeAlive: 2
   vectorMove: {x: 0, y: 0, z: 0}
 --- !u!198 &1220673187543663575
 ParticleSystem:

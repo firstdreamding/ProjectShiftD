@@ -9,8 +9,10 @@ public class BaseTowerScript : MonoBehaviour
     private bool canShoot;
 
     public float delayInSeconds;
+    public GemType[] towerGems = new GemType[2];
 
     private ShootHandler myShoot;
+
     void Start()
     {
         enemyList = new List<GameObject>();
@@ -21,7 +23,6 @@ public class BaseTowerScript : MonoBehaviour
 
     void Update()
     {
-
         //This code right now targets the object that enters into the range first
         if (canShoot && enemyList.Count != 0)
         {
@@ -33,6 +34,26 @@ public class BaseTowerScript : MonoBehaviour
     {
         yield return new WaitForSeconds(delayInSeconds);
         canShoot = true;
+    }
+
+    //Upgrade
+    private void Upgrade(GemType gemType)
+    {
+        /*
+        if (towerGems[0] != GemType.NONE)
+        {
+            towerGems[0] = gemType;
+        } else
+        {
+            if (towerGems[1] != GemType.NONE)
+            {
+                towerGems[1] = gemType;
+            } else
+            {
+                //Handle not 
+            }
+        }
+        */
     }
 
     private void OnHighHP()
