@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2044372100030124089}
   - component: {fileID: 7604790818014058524}
   - component: {fileID: 2755062950136717768}
+  - component: {fileID: 54102793902246668}
   - component: {fileID: 1220673187543663575}
   - component: {fileID: 3619057250200234869}
   m_Layer: 2
@@ -112,8 +113,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
-  timeAlive: 2
   vectorMove: {x: 0, y: 0, z: 0}
+--- !u!114 &54102793902246668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5826693165239372199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6917744e330854344b9da8bffcb36e76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeAlive: 2
+  firedTag: Player
+  hasRigidbody: 0
+  afterEffect: {fileID: 0}
 --- !u!198 &1220673187543663575
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -4931,7 +4947,7 @@ ParticleSystemRenderer:
   m_SortingFudge: 0
   m_NormalDirection: 1
   m_ShadowBias: 0
-  m_RenderAlignment: 0
+  m_RenderAlignment: 4
   m_Pivot: {x: 0, y: 0, z: 0}
   m_Flip: {x: 0, y: 0, z: 0}
   m_UseCustomVertexStreams: 0
