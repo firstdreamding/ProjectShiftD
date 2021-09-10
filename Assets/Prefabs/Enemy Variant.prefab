@@ -7,10 +7,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 380266760247574781, guid: 95da0e7cfa3351e4792d6d7b5e8a0e57,
+        type: 3}
+      propertyPath: Base1
+      value: 
+      objectReference: {fileID: 8247056387672340326, guid: ff64962621b29324aa4bff18c7e01355,
+        type: 3}
+    - target: {fileID: 380266760247574781, guid: 95da0e7cfa3351e4792d6d7b5e8a0e57,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 669185930155419071, guid: 2f42620ce5a01bc4cb47b60648d0c8fb,
+        type: 3}
     - target: {fileID: 4459333138909487739, guid: 95da0e7cfa3351e4792d6d7b5e8a0e57,
         type: 3}
       propertyPath: m_Name
-      value: Enemy
+      value: Enemy Variant
       objectReference: {fileID: 0}
     - target: {fileID: 4459333138909487743, guid: 95da0e7cfa3351e4792d6d7b5e8a0e57,
         type: 3}
